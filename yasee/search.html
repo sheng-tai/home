@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yasee</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/remodal-default-theme.css">
+    <link rel="stylesheet" href="./src/css/remodal.css">
+    <link rel="stylesheet" href="./src/css/ionicons.min.css">
+    <link rel="stylesheet" href="./src/css/grid.min.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+
+<body>
+    <div class="remodal-bg">
+        <form action="#" class="search">
+            <div class="search__container">
+                <i class="ion-android-search search__icon"></i>
+                <h2 class="search__title">Search?</h2>
+                <input class="search__input" type="text" name="searchInput" value="" id="searchInput" placeholder="搜尋">
+                <label class="search__label" for="searchInput">搜尋</label>
+                <select class="search__select" name="search__select" id="searchSelect">
+                <optgroup label="逛街">
+                    <option value="all">全部</option>
+                    <option value="eat">吃</option>
+                    <option value="drink">喝</option>
+                    <option value="play">玩</option>
+                    <option value="other">其他</option>
+                </optgroup>
+                <optgroup label="公共設施">
+                    <option value="trash">垃圾桶</option>
+                    <option value="car">停車場</option>
+                    <option value="WC">廁所</option>
+                </optgroup>
+            </select>
+                <a class="modal__link" href="#modal"><input type="button" class="search__button btn btn-full" name="button" value="搜尋" id="searchButton"></a>
+            </div>
+        </form>
+        <iframe id="map" class="search__showMap" src="./map.html" width="100%" height="100%"></iframe>
+        <div class="search__show" id="mapButton">地圖</div>
+
+        <div class="remodal" data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div id="yasee__output">result</div>
+            <br>
+            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+            <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+        </div>
+    </div>
+    <script src="./src/js/jquery.min.js"></script>
+    <script src="./src/js/remodal.min.js"></script>
+    <script src="./src/js/jquery.waypoints.min.js"></script>
+    <script src="./src/js/app.js"></script>
+</body>
+
+</html>
