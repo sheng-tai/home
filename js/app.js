@@ -24,6 +24,7 @@ $(function () {
     $('.navigation__link').click(function () {
         $('#nav').hide()
         bar.attr({ "xlink:href": "./img/sprite.svg#icon-menu" });
+        change = true
     })
 
     $('a[href*="#"]')
