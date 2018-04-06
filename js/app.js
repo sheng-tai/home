@@ -31,12 +31,12 @@ $(function () {
     change = true
   })
 
-  var percent = 0
+  var percent = 2
 
   var timer = setInterval(function(){
     
     $('#val').css('width', percent+'%') // loading bar 的增加
-    percent += 1
+    percent += 2
 
     if(percent > 100) {
       clearInterval(timer)
@@ -45,7 +45,7 @@ $(function () {
         $('#loading').hide()  // 延遲1秒後消失
       }, 1000)
     }
-  },30)
+  },20)
 
   $('a[href*="#"]')
     // Remove links that don't actually link to anything
