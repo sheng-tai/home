@@ -59,6 +59,7 @@ var yaseeData = [
 ]
 
 var boothData = []
+var items = []
 
 $(document).ready(function(){
 /*Smooth Scroll*/
@@ -191,18 +192,11 @@ $('#gate').click(function() {
 
 // pop open
 
-$('.search__list').delegate('.search__item', 'click', function() {
-    var clickIndex = $('.search__item').index(this)
-    var boothId = $(`.search__item${clickIndex}`).data('index')
-    // console.log(clickIndex)
-    for(var i = 0; i < boothData.length; i++) {
-        if(boothId == boothData[i].id) {
-            $('.pop__title').text(boothData[i].name)
-            $('.pop__site').text(`第${boothData[i].line}排 第${boothData[i].number}間`)
-        }
-    }
-    $('.pop').show()
-})
+// $('.search__list').delegate('.search__item', 'click', function() {
+    
+    
+//     $('.pop').show()
+// })
 
 // pop close
 
@@ -244,8 +238,8 @@ function infoRest(data) {
 
 function search() {
     var inputSearch = $('#searchInput').val()
-    var html = ''
-    var boothIndex = 0
+    var item = ''
+    $('.search__list').html('')
     $.ajax({
         url: '../../yajson.json',
         dataType: 'json',
@@ -256,14 +250,34 @@ function search() {
         $.each(d, function(i, v) {
             if(v.name.indexOf(inputSearch) > 0) {
                 // console.log(v.name)
-                html += `<li class="search__item search__item${boothIndex}" data-index="${v.id}">名稱: ${v.name} 位置: 第${v.line}排 第${v.number}間</li>`
-                boothIndex += 1
+                item = $(`<li class="search__item" 
+                 data-index="${v.id}">名稱: ${v.name} 位置: 第${v.line}排 第${v.number}間</li>`)
+
+                //  給每個item 的點擊事件
+                 item.click(function() {
+                    //  抓取id傳進popReset()
+                     var selectId = $(this).data('index')
+                     popReset(selectId)
+                 })
+
+                //  顯示item
+                $('.search__list').append(item)
             }
         })
-        $('.search__list').html(html)
+        
     })
 }
 
+// 更新pop
+function popReset(id) {
+    boothData.forEach((booth)=> {
+        if(id == booth.id) {
+           $('.pop__title').text(booth.name)
+           $('.pop__site').text(`第${booth.line}排 第${booth.number}`)
+           $('.pop').show()
+        }
+    })
+}
 
 
 // google map
