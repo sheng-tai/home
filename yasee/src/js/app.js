@@ -103,6 +103,8 @@ $('a[href*="#"]')
     /*sticky nav*/
 
    $('.js--section-about').waypoint(function(direction){
+       if(window.innerWidth < 500) return
+
        if(direction == 'down') {
            $('nav').addClass('sticky');
        } else {
@@ -112,6 +114,15 @@ $('a[href*="#"]')
        offset: '220px;'
    });
 
+//    menu
+
+$('#menu').click(function() {
+    $('.main-nav__list').slideToggle()
+})
+
+$('.main-nav__item').click(function() {
+     $('.main-nav__list').slideToggle()
+})
 
 //    search
 
@@ -248,7 +259,7 @@ function search() {
         boothData = d
 
         $.each(d, function(i, v) {
-            if(v.name.indexOf(inputSearch) > 0) {
+            if(v.name.indexOf(inputSearch) >= 0) {
                 // console.log(v.name)
                 item = $(`<li class="search__item" 
                  data-index="${v.id}">名稱: ${v.name} 位置: 第${v.line}排 第${v.number}間</li>`)
@@ -321,11 +332,3 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   )
 }
 
-
-
-
-
-
-
-
-//
