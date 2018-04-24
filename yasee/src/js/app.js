@@ -116,13 +116,19 @@ $('a[href*="#"]')
 
 //    menu
 
+if(window.innerWidth < 500) {
+    $('.main-nav__list').hide()
+}
+
 $('#menu').click(function() {
     $('.main-nav__list').slideToggle()
 })
 
 $('.main-nav__item').click(function() {
-     $('.main-nav__list').slideToggle()
+    $('.main-nav__list').slideToggle()
 })
+
+
 
 //    search
 
